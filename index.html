@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background-color: blue;
+
+
+            
+        }
+        .main{
+            width: 50%;
+            box-shadow: 5px 5px 8px black;
+            /* height: 50%; */
+            display: flex;
+            background-color: white;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2% 2%;
+        }
+        form{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        input{
+            width: 90%;
+            height: 40px;
+            border: 2px solid blue;
+            border-radius: 10px;
+            outline: none;
+            padding: 10px;
+            font-size: 1.3rem;
+            /* padding: 30px 0px; */
+            margin-top: 30px;
+        }
+        h1{
+            font-size: 2rem;
+        }
+        span{
+            color: blue;
+            position: relative;
+            
+            
+
+        }
+        img{
+            padding: 30px;
+            transition: all 1s;
+        }
+        .btn{
+            width: 20%;
+            height: 40px;
+            border: 2px solid rgb(1, 1, 115);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+
+        }
+        span::after{
+            content: "";
+            background-color: blue;
+            height: 3px;
+            position: absolute;
+            top: 35px;
+            left: -10px;
+            width: 0%;
+            transition: all .8s .5s;
+        }
+        span.active::after{
+            width: 110%;
+        }
+
+</style>
+
+</head>
+<body>
+    <div class="main">
+        <h1>Enter your <span>name or link</span></h1>
+       <form action="" class="input" id="form"> <input type="text" id="input"></form>
+        <img src="" id="img" alt="">
+        <butto class="btn">Create QR code</button>
+    </div>
+    <script>
+        let input = document.querySelector("#input")
+        let img = document.querySelector("#img")
+        let submit = document.querySelector(".btn")
+        form = document.querySelector("#form")
+        let span = document.querySelector("span")
+        submit.addEventListener("click", ()=>{
+       span.classList.remove("active")
+
+            values = input.value
+            const utl = " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="
+            img.src = utl + values;
+            input.value= ""
+            span.classList.add("active")
+
+            
+        })
+        form.addEventListener("submit", (e)=>{
+        span.classList.remove("active")
+
+            e.preventDefault()
+            values = input.value
+            const utl = " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="
+            img.src = utl + values;
+            input.value= ""
+            span.classList.add("active")
+
+
+        })
+setTimeout(()=>{
+
+},2000)
+    </script>
+</body>
+</html>
